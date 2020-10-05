@@ -1,5 +1,10 @@
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG,packageOptions;
-var packageBody,ground
+var packageBody,ground;
+
+var boxL,boxL_ops,boxL_body;
+var boxR,boxR_ops,boxR_body
+var boxB,boxB_ops,boxB_body;
+
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -28,6 +33,15 @@ function setup() {
 	groundSprite=createSprite(width/2, height-35, width,10);
 	groundSprite.shapeColor=color(255);
 
+	boxL = createSprite((width/2)-110,590,20,100);
+	boxL.shapeColor ="red";
+	boxL_ops = {isStatic:true}
+	boxR = createSprite((width/2)+110,590,20,100);
+	boxR.shapeColor ="red";
+	boxR_ops = {isStatic:true}
+	boxB = createSprite(width/2,640,200,20);
+	boxB.shapeColor ="red";
+	boxB_ops = {isStatic:true}
 
 	engine = Engine.create();
 	world = engine.world;
@@ -35,6 +49,12 @@ function setup() {
 	packageBody = Bodies.circle(width/2 , 200 , 5 , packageOptions);
 	World.add(world, packageBody);
 	
+	boxL_body = Bodies.rectangle(390,610,100,20,boxL_ops);
+	World.add(world,boxL_body);
+	boxR_body = Bodies.rectangle(510,610,100,20,boxR_ops);
+	World.add(world,boxR_body);
+	boxB_body = Bodies.rectangle(400,660,20,200,boxB_ops);
+	World.add(world,boxB_body);
 
 	//Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
@@ -52,6 +72,12 @@ function draw() {
   Engine.update(engine);
   packageSprite.x= packageBody.position.x; 
   packageSprite.y= packageBody.position.y;
+  boxL.x = boxL_body.position.x;
+  boxL.y = boxL_body.position.y;
+  boxR.x = boxL_body.position.x;
+  boxR.y = boxL_body.position.y;
+  boxB.x = boxL_body.position.x;
+  boxB.y = boxL_body.position.y;
   keyPressed(); 
   drawSprites();
  
