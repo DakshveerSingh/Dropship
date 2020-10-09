@@ -49,11 +49,11 @@ function setup() {
 	packageBody = Bodies.circle(width/2 , 200 , 5 , packageOptions);
 	World.add(world, packageBody);
 	
-	boxL_body = Bodies.rectangle(390,610,100,20,boxL_ops);
+	boxL_body = Bodies.rectangle((width/2)-110,590,20,100,boxL_ops);
 	World.add(world,boxL_body);
-	boxR_body = Bodies.rectangle(510,610,100,20,boxR_ops);
+	boxR_body = Bodies.rectangle((width/2)+110,590,20,100,boxR_ops);
 	World.add(world,boxR_body);
-	boxB_body = Bodies.rectangle(400,660,20,200,boxB_ops);
+	boxB_body = Bodies.rectangle(width/2,640,200,20,boxB_ops);
 	World.add(world,boxB_body);
 
 	//Create a Ground
@@ -72,12 +72,12 @@ function draw() {
   Engine.update(engine);
   packageSprite.x= packageBody.position.x; 
   packageSprite.y= packageBody.position.y;
-  boxL.x = boxL_body.position.x;
+  /*boxL.x = boxL_body.position.x;
   boxL.y = boxL_body.position.y;
   boxR.x = boxL_body.position.x;
   boxR.y = boxL_body.position.y;
   boxB.x = boxL_body.position.x;
-  boxB.y = boxL_body.position.y;
+  boxB.y = boxL_body.position.y;*/
   keyPressed(); 
   drawSprites();
  
